@@ -54,6 +54,53 @@ In this project, you can build your own C++ application or extend this Snake gam
 
 2. Your can check the player histories in the snake.txt file. Your could see who is the best player.
 
+## Rubic items matched ##
+
+### Object Oriented Programming - Use OOP techniques ###
+
+To meet this requirement, I created three new classes, including `Player`, `GameData` and `GameManager` (inside data.h and gamemanager.h). Player class holds the player information, such as name, age and score. `GameData` class holds the vector of players and orginizes methods to store player information to the text file. `GameManager` to control the game and interact with users.
+
+### Object Oriented Programming - Use appropiate access specifiers ###
+
+To fulfill this requirement, I used private class member, mostly. For instance, in the Player class, the memeber data are name, age, score, all of them is private (line 9 - 11), or class GameData, vector of players is also private (line 27).
+
+### Object Oriented Programming - Class constructor utilize member initialization list ###
+
+You can see, all the new classes have constructor using member initialization list. Inside data.h file, line 10 - 17 and the gamemanager.h file, line 7.
+
+### Loops, Funtions, I/O - C++ functions and control structures ###
+
+In this project, I used variety of control structures, including if/else, if/else if/ else, while, do/while, switch/case, (inside gamemanager.cpp, line 10 - 97, data.cpp line 40).
+
+### Loops, Funtions, I/O - Interact with file ###
+
+In the `GameData` class, I have some methods to interact with the text file, like `GameData::ReadPlayerData` line 40, `GameData::StorePlayerData` line 25.
+
+### Loops, Funtions, I/O - Accept user input and process input ###
+
+When user enter your age, only number characters are accepted and it is between 10 and 99. With the game menu, you have to press correct keyword to control the game, if not correct, you need to re-enter again. You can see it in the `GameManager::GameManagerInit()` line 10 in the gamemanager.cpp file.
+
+### Memory Management - Use references in function declarations ###
+
+With this requirement, I often use passing by reference in my funtions. You can see some methods in `GameData` class, such as `GameData::StorePlayerData` line 25, `GameData::AddNewPlayer` line 80 or `Player::operator<` line 21 in the data.cpp file.
+
+### Memory Management - Use smart pointer ###
+
+I used `std::unique_ptr` with `GameData` member in the `GameManager` class, to make exclusive ownership with the `GameData`.
+
+### Memory Management - RAII techinuque ###
+
+I usued `gameManger` in the main file as a local variable and combine with smart pointer, the resource will be freed automatically when it out of scope. And I usually use local variable for automatically free the occupied memory.
+
+### Concurrency - Use multithreding ###
+
+I cread another thread using member function to make the obstacle. Every 10 seconds, a new obstacle is created. Use can see line 24 in the game.cpp file.
+
+### Concurrency - Use mutex or lock ###
+
+In the game class, I created a thread and a mutex lock. Mutex is used to synchronize data (vector of obstacle) and avoid data racing (running and snake.alive). Please check the game.cpp for more detailed.
+
+
 ## CC Attribution-ShareAlike 4.0 International
 
 
